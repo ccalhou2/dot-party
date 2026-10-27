@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dot Party</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- HOME -->
+<section id="home" class="screen active">
+  <div class="wrap">
+    <div class="card">
+      <h1>Dot Party</h1>
+      <p class="sub">A secret line of five dots. 2 players. Crack it first.</p>
+      <label for="name">Your name</label>
+      <input id="name" maxlength="14" autocomplete="off" placeholder="Name" />
+      <button id="create" class="primary">Create room</button>
+      <div class="joinrow">
+        <input id="code" maxlength="4" autocomplete="off" placeholder="CODE" />
+        <button id="join">Join by code</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Open rooms <span id="roomcount" class="muted"></span></h2>
+      <div id="lobbylist" class="lobbylist"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOBBY -->
+<section id="lobby" class="screen">
+  <div class="wrap">
+    <div class="card">
+      <div class="row space">
+        <div>
+          <div class="muted small">Room code</div>
+          <div id="lobbycode" class="code"></div>
+        </div>
+        <button id="leave1" class="ghost">Leave</button>
+      </div>
+      <div id="lobbyplayers" class="players"></div>
+      <button id="start" class="primary">Start game</button>
+      <p id="lobbyhint" class="muted small"></p>
+    </div>
+  </div>
+</section>
+
+<!-- GAME -->
+<section id="game" class="screen">
+  <div class="wrap wide">
+    <div class="card">
+      <div class="row space">
+        <div>
+          <div class="muted small">Room <span id="gamecode"></span></div>
+          <div id="turnline" class="turnline"></div>
+        </div>
+        <button id="leave2" class="ghost small">Leave</button>
+      </div>
+      <div class="timerbar"><div id="timerfill"></div></div>
+      <div id="scores" class="scores"></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Your board</h2>
+        <div id="board" class="board"></div>
+        <div id="palette" class="palette"></div>
+        <button id="submit" class="primary">Submit guess</button>
+        <p id="yourknown" class="muted small"></p>
+      </div>
+
+      <div class="card">
+        <div class="legend">
+          <span><i class="lg green"></i> right color + spot</span>
+          <span><i class="lg yellow"></i> right color, wrong spot</span>
+        </div>
+        <h2>Your results</h2>
+        <div id="yourhistory" class="history"></div>
+        <h2>Public guesses</h2>
+        <div id="publiclog" class="publog"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- END -->
+<section id="end" class="screen">
+  <div class="wrap">
+    <div class="card">
+      <h1 id="endtitle"></h1>
+      <p id="endreason" class="sub"></p>
+      <div class="muted small">Secret line</div>
+      <div id="secret" class="board static"></div>
+      <h2>Scores</h2>
+      <div id="endscores" class="scores vertical"></div>
+      <h2>All guesses</h2>
+      <div id="endlog" class="publog"></div>
+      <div class="endactions">
+        <button id="rematch" class="primary">Rematch</button>
+        <button id="backhome" class="ghost">Leave room</button>
+      </div>
+      <p id="rematchhint" class="muted small"></p>
+    </div>
+  </div>
+</section>
+
+<div id="toast" class="toast"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
